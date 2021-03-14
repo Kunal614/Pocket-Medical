@@ -1,0 +1,107 @@
+$base-bgcolor: #354152;
+$base-color: #7e8ba3;
+$base-font-weight: 300;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
+$base-font-family: Helvetica Neue;
+$base-font-family-fallback: sans-serif;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: $base-bgcolor;
+    color: $base-color;
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family,
+    $base-font-family-fallback;
+    margin: 0;
+    min-height: 100%;
+}
+
+.align {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    &__item {
+        &--start {
+            align-self: flex-start;
+        }
+        &--end {
+            align-self: flex-end;
+        }
+    }
+}
+
+.site {
+    &__main {}
+    &__logo {
+        margin-bottom: 2rem;
+    }
+}
+
+$input-placeholder-color: #7e8ba3;
+input {
+    border: 0;
+    font: inherit;
+    &::placeholder {
+        color: $input-placeholder-color;
+    }
+}
+
+.form {
+    &__field {
+        margin-bottom: 1rem;
+    }
+    input {
+        outline: 0;
+        padding: .5rem 1rem;
+    }
+}
+
+$grid-max-width: 50rem;
+$grid-width: 80%;
+.grid {
+    margin: 0 auto;
+    max-width: $grid-max-width;
+    width: $grid-width;
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+svg {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+$link-color: #7e8ba3;
+a {
+    color: $link-color
+}
+
+.register {
+    box-shadow: 0 0 250px #000;
+    text-align: center;
+    padding: 4rem 2rem;
+    input {
+        border: 1px solid #242c37;
+        border-radius: 800px;
+        background-color: transparent;
+        text-align: center;
+        &[type="submit"] {
+            background-image: linear-gradient(160deg, red 0%, black 100%);
+            color: #fff;
+            margin-bottom: 5rem;
+            width: 100%;
+        }
+    }
+}

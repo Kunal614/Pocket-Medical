@@ -1,0 +1,273 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pocket Hospital</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The Modal (background) */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 0%;
+        }
+        /* The Close Button */
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* Float four columns side by side */
+        
+        .column {
+            float: left;
+            width: 30%;
+            padding: 10px 20px;
+        }
+        /* Remove extra left and right margins, due to padding */
+        
+        .row {
+            margin: 0 -5px;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Responsive columns */
+        
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+        /* Style the counter cards */
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="../static/detection/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{%static 'detection/css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <link href="{%static 'detection/css/search.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light  bg-white  shadow">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <a href="{%url 'Dashboard'%}"><strong>Pocket Hospital</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'Dashboard' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Profile' %}">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Logout' %}">Logout</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <div class="topbar-divider d-none d-sm-block"> </div>
+                    <div class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="{%url 'Profile' %}" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user}}</span>
+                            <img class="img-profile rounded-circle" src=../profile_pics/{{user.image}} width="20px">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{%url 'Dashboard' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Home
+                            </a>
+                            <a class="dropdown-item" href="{%url 'Profile' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{%url 'Logout' %}">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </nav>
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <p style=" text-transform: capitalize; font-family:'serif;">Add Some famous landmark with city name , if not have alnd mark just add city name with state name</p>
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="container h-100">
+                                <div class="d-flex justify-content-center h-100">
+
+                                    <form class="searchbar" method="POST" style="margin-left: 30%;">
+                                        {%csrf_token%}
+                                        <input class="search_input" type="text" name="address" placeholder="Search...">
+                                        <input type="submit" value='&#128269' href="#" class="search_icon" style="color:red;">
+
+                                    </form>
+
+                                    {%if request.method == 'GET'%}
+                                    <style>
+                                        .searchbar {
+                                            margin-top: 20%;
+                                        }
+                                    </style>
+                                    {%endif%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-7" style="margin-left:18%;">
+                            <br> {%if request.method == 'POST'%}
+                            <p>
+                                <center style="color: red; font-family: serif;  text-transform: capitalize;">{{mes}}</center>
+                            </p>
+                            <div class="row">
+                                {%for title , addres , ur in detail%}
+                                <div class="column">
+                                    <div class="card">
+
+                                        <h3>{{title}}</h3>
+                                        <p>{{addres}}</p>
+
+                                        <a href="{{ur}}">
+                                            Direction
+                                        </a>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                            </div>
+                            {%endif%}
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <script>
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

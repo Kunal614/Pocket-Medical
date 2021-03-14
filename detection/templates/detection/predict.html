@@ -1,0 +1,207 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pocket Hospital</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The Modal (background) */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 0%;
+        }
+        /* The Close Button */
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="../static/detection/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{%static 'detection/css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light  bg-white  shadow">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <a href="{%url 'Dashboard'%}"><strong>Pocket Hospital</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'Dashboard' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Profile' %}">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Logout' %}">Logout</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <div class="topbar-divider d-none d-sm-block"> </div>
+                    <div class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="{%url 'Profile' %}" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user}}</span>
+                            <img class="img-profile rounded-circle" src=../profile_pics/{{user.image}} width="20px">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{%url 'Dashboard' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Home
+                            </a>
+                            <a class="dropdown-item" href="{%url 'Profile' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{%url 'Logout' %}">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </nav>
+
+                <div class="container-fluid">
+                    <form method="POST" action="" enctype="multipart/form-data" style="margin-left: 30%;" class="searchbar">
+                        {%csrf_token%}
+                        <div class="row">
+                            <div class="col-md-6"> <label for="myfile">Select a Wound Image:</label></div>
+                            <div class="col-md-6"> <input type="file" id="myfile" name="myfile"></div>
+                        </div>
+
+                        <div class="row"> <input type="submit" value="upload" class="btn btn-success" id="predict"></div>
+
+                    </form>
+                    <div id="ok">
+
+                        <i class="fa fa-spinner fa-spin" style="font-size:100px; margin-left: 40%; margin-top:5%; color:red;"></i>
+                        <h3 style=" margin-left: 35%; margin-top:2%"> Predicting Your Result</h3>
+                    </div> {%if request.method == 'GET'%}
+                    <style>
+                        .searchbar {
+                            margin-top: 20%;
+                        }
+                    </style>
+                    {%endif%}
+
+                </div>
+                <div style="margin-left: 30%; margin-top:3%">
+                    <div class="row">
+                        <img src='{{ input_image }}' name='inputImage' type="text" style="margin-left: 12%; width:300px; border-radius: 50%;">
+                    </div>
+                    <div class="row" style="margin-left: 15%; margin-top:2%;">
+                        {%if prediction != 'None'%}
+
+                        <h1 style="font-family: serif;">{{prediction}}</h1>{%endif%} {%if prediction == 'Non_Severe' %}
+                        <small>Nothing Much Serious</small>{%elif prediction == 'Severe' %}
+                        <small>Very Serious Go to Hospital Or search</small>{%endif%}
+                    </div>
+                    <div class="row">
+                        {%if prediction == 'Non_Severe' %}
+                        <a href="{%url 'Medical' %}" class="btn btn-danger" style=" color:white; width:50%; margin-top:3%;">Search Near By Medicals</a> {%elif prediction == 'Severe' %}
+                        <a href="{%url 'Hospital' %}" class="btn btn-danger" style=" color:white; width:50%; margin-top:3%;">Search Near By Hospitals</a> {%endif%}
+                    </div>
+                    <div class="row">
+                        {%if not prediction == 'None'%}
+                        <a href="{%url 'Details' %}" class="btn btn-success" style=" color:white; width:18%; margin-top:3%;">Upload/Scan QR for Details</a>
+                        <a href="#" class="btn btn-success" style=" color:white; width:18%; margin-top:3%; margin-left:15%;">Upload Face For Details</a>{%endif%}
+
+                    </div>
+                    {%if not prediction == 'None'%} <small>Scan From Mobile</small>{%endif%}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#ok').hide();
+            $('#predict').click(function() {
+                $('#ok').show();
+            })
+        });
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

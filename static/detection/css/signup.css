@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  background-color: #354152;
+  color: #7e8ba3;
+  font: 300 1rem/1.5 Helvetica Neue, sans-serif;
+  margin: 0;
+  min-height: 100%; }
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row; }
+  .align__item--start {
+    align-self: flex-start; }
+  .align__item--end {
+    align-self: flex-end; }
+
+.site__logo {
+  margin-bottom: 2rem; }
+
+input {
+  border: 0;
+  font: inherit; }
+  input::placeholder {
+    color: #7e8ba3; }
+
+.form__field {
+  margin-bottom: 1rem; }
+
+.form input {
+  outline: 0;
+  padding: .5rem 1rem; }
+
+.grid {
+  margin: 0 auto;
+  max-width: 50rem;
+  width: 80%; }
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase; }
+
+svg {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle; }
+
+a {
+  color: #7e8ba3; }
+
+.register {
+  box-shadow: 0 0 250px #000;
+  text-align: center;
+  padding: 4rem 2rem; }
+  .register input {
+    border: 1px solid #242c37;
+    border-radius: 800px;
+    background-color: transparent;
+    text-align: center; }
+    .register input[type="submit"] {
+      background-image: linear-gradient(160deg, red 0%, black 100%);
+      color: #fff;
+      margin-bottom: 5rem;
+      width: 100%; }
+
+/*# sourceMappingURL=signup.css.map */

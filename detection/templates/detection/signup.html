@@ -1,0 +1,102 @@
+<!DOCTYPE html> {% load sass_tags %}
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'detection/css/signup.scss'%}">
+
+    <style>
+        input {
+            width: 50%;
+            height: 40px;
+            flex: 0 0 200px;
+            margin-left: 10px;
+        }
+        
+        label {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            text-align: right;
+            width: 400px;
+            line-height: 26px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+
+
+<body class="align">
+
+    <div class="grid align__item" style="height: 20%;">
+        <h2><strong style="margin-left:33%;  font-family:serif; font-size:25px;">   Pocket Hospital </strong></h2>
+        <div class="register" style="margin-top:-60px; font-family:serif;">
+            <h2 style="font-size:32px;">Register Youself</h2>
+            <p>
+                <center style="color: red;">{{message}}</center>
+            </p>
+            <form action="" method="post" class="form" enctype="multipart/form-data">
+                {%csrf_token%}
+                <div class="form__field">
+                    <label for='username'>Username</label>
+                    <input type="text" name='username' placeholder="kunal@123" required>
+                </div>
+                <div class="form__field">
+                    <label for='password'>Password</label>
+                    <input type="password" name="password" placeholder="••••••••••••" style="width:50%" required>
+                </div>
+                <div class="form__field">
+                    <label for='fullname'>Full Name</label>
+                    <input type="text" name='fullname' placeholder="kunal kr" required>
+                </div>
+                <div class="form__field">
+                    <label for='pcontact'>Personal Contact</label>
+                    <input type="number" name='pcontact' placeholder="5165423" required>
+                </div>
+                <div class="form__field">
+                    <label for='rcontact'>Relative Contact</label>
+                    <input type="number" name='rcontact' placeholder="5413624" required>
+                </div>
+                <div class="form__field">
+                    <label for='bgroup'>Blood Group</label>
+                    <input type="text" name='bgroup' placeholder="o+" required>
+                </div>
+                <div class="form__field">
+                    <label for='email'>Email</label>
+                    <input type="email" name='email' placeholder="kunal@gmail.com" style="width:50%" required>
+                </div>
+                <div class="form__field">
+                    <label for='age'>Age</label>
+                    <input type="number" name='age' placeholder="20" required>
+                </div>
+                <div class="form__field">
+                    <label for='address'>Address</label>
+                    <input type="text" name='address' placeholder="xyz" required>
+                </div>
+                <div class="form__field">
+                    <label for='profile'>Image</label>
+                    <input type="file" name="profile" placeholder="Upload Image" required>
+                </div>
+
+                <div class="form__field">
+                    <input type="submit" value="Sign Up">
+                </div>
+
+            </form>
+
+            <p style="margin-top:-5%;">Already have an accout? <a href="/login">Log in</a></p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

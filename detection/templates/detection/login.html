@@ -1,0 +1,57 @@
+<!DOCTYPE html> {% load sass_tags %}
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'detection/css/login.scss'%}">
+
+    <style>
+
+    </style>
+
+</head>
+
+
+<body class="align">
+
+    <div class="grid align__item" style="font-family: serif;">
+        {{message}}
+        <h2><strong style="margin-left: 24%; font-size:25px; margin-top:-100%">   Pocket Hospital </strong></h2>
+        <div class="register" style="margin-top: -12%;">
+
+
+            <h2>Log In</h2>
+
+            <form action="" method="post" class="form">
+                {%csrf_token%}
+                <div class="form__field">
+                    <input type="text" placeholder="kunal@123" name='username'>
+                </div>
+
+                <div class="form__field">
+                    <input type="password" placeholder="••••••••••••" name='password'>
+                </div>
+
+                <div class="form__field">
+                    <input type="submit" value="Login In">
+                </div>
+
+                <a href="#" style="color:red; font-weight:bold">Guest Login</a>
+
+            </form>
+
+
+            <p>Don't Have Account? <a href="/signup">Signup</a></p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

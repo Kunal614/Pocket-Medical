@@ -1,0 +1,290 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pocket Hospital</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The Modal (background) */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 0%;
+        }
+        /* The Close Button */
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="../static/detection/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{%static 'detection/css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light  bg-white  shadow">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <a href="{%url 'Dashboard'%}"><strong>Pocket Hospital</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'Dashboard' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Profile' %}">Profile</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Medical' %}">Near By Medicals</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{%url 'Hospital' %}" class="nav-link">Near By Hospitals</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'Logout' %}">Logout</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <div class="topbar-divider d-none d-sm-block"> </div>
+                    <div class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="{%url 'Profile' %}" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user}}</span>
+                            <img class="img-profile rounded-circle" src=../profile_pics/{{user.image}} width="20px">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{%url 'Dashboard' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Home
+                            </a>
+                            <a class="dropdown-item" href="{%url 'Profile' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{%url 'Logout' %}">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </nav>
+
+
+
+
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                        <button id="myBtn" class="btn btn-success">Add Record</button>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal" style=" width: 40%;
+                        height: 100%;
+                        left: 50%;
+                        top: 20%; 
+                        margin-left: -150px;
+                        margin-top: -150px;">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <form method="POST" action="" enctype="multipart/form-data">
+                                    {%csrf_token%}
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Title</label>
+                                            <input type="text" class="form-control" id="name" placeholder="Name" name="Name">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="value">Amount</label>
+                                            <input type="number" class="form-control" id="value" placeholder="Value" name="Value">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desc">Description</label>
+                                        <input type="text" class="form-control" id="desc" name='description'>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desc">Hospital Name</label>
+                                        <input type="text" class="form-control" id="desc" name='hos_name'>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date">Date</label>
+                                        <input type="date" class="form-control" id="desc" name='date'>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="report">Report Image</label>
+                                        <input type="file" class="form-control" id="remark" name='report_3'>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <div class="col-md-2"> <input class="form-check-input" type="checkbox" id="gridCheck" required></div>
+                                            <div class="col-md-4"> <label class="form-check-label" for="gridCheck">
+                                            Conform To Add
+                                    </label></div>
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">ADD</button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <a href="{%url 'Prediction'%}" id="myBtn" class="btn btn-danger">Predict Severity</a>
+                        <a href="{%url 'GenerateQr'%}">Generate QR of your Profile</a>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px;">Medical Record</h6>
+
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">View</th>
+                                            <th scope="col">Delete</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for report in Report%}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>{{report.title}}</td>
+                                            <td>{{report.date}}</td>
+                                            <td><a href="/view_report/{{ report.id }}" class="btn btn-success">Brief</a></td>
+                                            <td><a href="/delete_report/{{ report.id }}" class="btn btn-danger">Delete</a></td>
+                                        </tr>
+                                        {%endfor%}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <script>
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
