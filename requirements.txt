@@ -20,4 +20,4 @@ virtualenv==20.0.30
 Werkzeug==1.0.1
 zbar-py==1.0.4
 django-heroku==0.3.1
-scikit-image==0.18.0
+scikit-image==0.18.0rc0
