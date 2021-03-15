@@ -105,12 +105,12 @@ DATABASES = {
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
+   
 ]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR+STATIC_URL
-SASS_PROCESSOR_ROOT = STATIC_ROOT
+# SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 
 # Internationalization
