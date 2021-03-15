@@ -25,7 +25,7 @@ import json
 from pyzbar.pyzbar import decode
 
 # Create your views here.
-model = models.load_model('wound_aug.h5')
+model = models.load_model('./wound_aug.h5')
 def Signup(request):
     if request.method == 'POST':
         res = request.POST
