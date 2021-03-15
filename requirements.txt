@@ -9,7 +9,6 @@ geopy==2.1.0
 gunicorn==20.0.4
 numpy==1.19.5
 opencv-python==4.5.1.48
-pandas==1.2.1
 Pillow==8.1.0
 pipenv==2020.8.13
 pyzbar==0.1.8
