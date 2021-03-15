@@ -299,7 +299,7 @@ def Medical(request):
             lat = location.latitude
             lng = location.longitude
             url ="https://discover.search.hereapi.com/v1/discover"
-            apikey='izgWHNR9NrmVLDKm7HzZlCLT5zE6Qb7Y-XWQCKA23pE'
+            apikey='Add Your Api key'
             query='medicals' #hospitals
             PARAMS = {
                         'apikey':apikey,
@@ -343,7 +343,7 @@ def Hospital(request):
             lat = location.latitude
             lng = location.longitude
             url ="https://discover.search.hereapi.com/v1/discover"
-            apikey='izgWHNR9NrmVLDKm7HzZlCLT5zE6Qb7Y-XWQCKA23pE'
+            apikey='Add Your Api key'
             query='hospitals' #hospitals
             PARAMS = {
                         'apikey':apikey,
