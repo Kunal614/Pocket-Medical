@@ -10,10 +10,12 @@ from PIL import Image
 import json
 from django.conf import settings
 import requests
+from django.contrib.auth.hashers import make_password
 from geopy.geocoders import Nominatim
 from tensorflow.keras import models
 from base64 import b64encode 
-import cv2 as cv
+# import keras
+# import cv2 as cv
 # from keras.preprocessing.image import img_to_array  , load_img , ImageDataGenerator
 # import matplotlib.pyplot as plt
 from PIL import Image
@@ -25,7 +27,8 @@ import json
 from pyzbar.pyzbar import decode
 
 # Create your views here.
-model = models.load_model('wound_aug.h5')
+# model = keras.models.load_model("./wound_aug.h5", compile=False)
+model = models.load_model('./wound_aug.h5' , compile = False)
 def Signup(request):
     if request.method == 'POST':
         res = request.POST
@@ -37,7 +40,7 @@ def Signup(request):
             user = None    
         print(user)
         if user is  None:
-            user =  User.objects.create(username = res['username'] , password = res['password'] , email = res['email'])
+            user =  User.objects.create(username = res['username'] , password = make_password(res['password']) , email = res['email'])
             print(user)
             user.save()
             print(myfile)
@@ -158,7 +161,6 @@ def Prediction(request):
             else:
                 mes = "Non_Severe"    
             print(p)
-            time.sleep(1)
             return render(request , 'detection/predict.html' ,  {'user':cl , 'prediction':mes , "input_image": input_image})
     
         

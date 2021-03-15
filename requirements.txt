@@ -8,16 +8,20 @@ djangorestframework==3.12.2
 geopy==2.1.0
 gunicorn==20.0.4
 numpy==1.19.5
-opencv-python==4.5.1.48
+# opencv-python==4.5.1.48
 Pillow==8.1.0
 pipenv==2020.8.13
 pyzbar==0.1.8
 qrcode==6.1
 qrtools==0.0.2
 requests==2.25.1
-tensorflow==2.4.1
+tensorflow==2.0.0
 virtualenv==20.0.30
 Werkzeug==1.0.1
 zbar-py==1.0.4
 django-heroku==0.3.1
-scikit-image==0.18.1 
+scikit-image==0.17.2
+# keras==2.4.3
+h5py==2.10.0
+
+
