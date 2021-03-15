@@ -10,6 +10,7 @@ from PIL import Image
 import json
 from django.conf import settings
 import requests
+from django.contrib.auth.hashers import make_password
 from geopy.geocoders import Nominatim
 from tensorflow.keras import models
 from base64 import b64encode 
@@ -39,7 +40,7 @@ def Signup(request):
             user = None    
         print(user)
         if user is  None:
-            user =  User.objects.create(username = res['username'] , password = res['password'] , email = res['email'])
+            user =  User.objects.create(username = res['username'] , password = make_password(res['password']) , email = res['email'])
             print(user)
             user.save()
             print(myfile)
