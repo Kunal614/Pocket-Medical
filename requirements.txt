@@ -21,5 +21,7 @@ Werkzeug==1.0.1
 zbar-py==1.0.4
 django-heroku==0.3.1
 scikit-image==0.17.2
-keras==2.4.3
+# keras==2.4.3
+h5py==2.10.0
+
 
