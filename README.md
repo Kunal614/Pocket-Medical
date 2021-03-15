@@ -11,7 +11,7 @@ profile information and can also deocde it.
     3. (linux) source bin/activate
 
   * Install all the requirements -  pip install -r requirements.txt
-  * I used ```here map Api``` (it is free) Add your api key in the Medical and Hospital Function.
+  * I used ```here map Api``` (it is free) Add api key in the Medical and Hospital Function in views.py.
   * python3 manage.py makemigrations
   * python3 manage.py migrate
   * python3 manage.py runserver 
