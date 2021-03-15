@@ -11,8 +11,9 @@ import json
 from django.conf import settings
 import requests
 from geopy.geocoders import Nominatim
-from tensorflow.keras import models
+# from tensorflow.keras import models
 from base64 import b64encode 
+import keras
 # import cv2 as cv
 # from keras.preprocessing.image import img_to_array  , load_img , ImageDataGenerator
 # import matplotlib.pyplot as plt
@@ -25,7 +26,8 @@ import json
 from pyzbar.pyzbar import decode
 
 # Create your views here.
-model = models.load_model('./wound_aug.h5')
+model = keras.models.load_model("./wound_aug.h5", compile=False)
+# model = models.load_model('./wound_aug.h5')
 def Signup(request):
     if request.method == 'POST':
         res = request.POST
@@ -158,7 +160,6 @@ def Prediction(request):
             else:
                 mes = "Non_Severe"    
             print(p)
-            time.sleep(1)
             return render(request , 'detection/predict.html' ,  {'user':cl , 'prediction':mes , "input_image": input_image})
     
         
