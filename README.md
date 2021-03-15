@@ -11,11 +11,11 @@ profile information and can also deocde it.
     3. (linux) source bin/activate
 
   * Install all the requirements -  pip install -r requirements.txt
+  * I used ```here map Api``` (it is free) Add your api key in the Medical and Hospital Function.
   * python3 manage.py makemigrations
   * python3 manage.py migrate
   * python3 manage.py runserver 
-  * I used ```here map Api``` (it is free) Add your api key in the Medical and Hospital Function.
-
+  
 * Cnn model https://github.com/Kunal614/Pocket-Medical-CNN-Model
 * App link https://pocket-hospital.herokuapp.com/
 
