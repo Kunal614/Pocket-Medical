@@ -13,7 +13,7 @@ import requests
 from geopy.geocoders import Nominatim
 from tensorflow.keras import models
 from base64 import b64encode 
-import cv2 as cv
+# import cv2 as cv
 # from keras.preprocessing.image import img_to_array  , load_img , ImageDataGenerator
 # import matplotlib.pyplot as plt
 from PIL import Image
