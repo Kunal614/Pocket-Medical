@@ -21,5 +21,6 @@ Werkzeug==1.0.1
 zbar-py==1.0.4
 django-heroku==0.3.1
 scikit-image==0.17.2
+python3-dev
 zbar==0.10 
-include_directories(${ZBAR_INCLUDE_DIR})
+
