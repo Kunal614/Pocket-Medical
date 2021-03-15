@@ -1,101 +1,198 @@
-<!DOCTYPE html> {% load sass_tags %}
-
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'detection/css/signup.scss'%}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Signup</title>
 
     <style>
         input {
-            width: 50%;
-            height: 40px;
-            flex: 0 0 200px;
-            margin-left: 10px;
-        }
-        
-        label {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            text-align: right;
-            width: 400px;
-            line-height: 26px;
-            margin-bottom: 10px;
+            border-radius: 5px;
         }
     </style>
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="../static/detection/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{%static 'detection/css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 </head>
 
+<body id="page-top">
+    <div id="wrapper">
 
 
-<body class="align">
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    <div class="grid align__item" style="height: 20%;">
-        <h2><strong style="margin-left:33%;  font-family:serif; font-size:25px;">   Pocket Hospital </strong></h2>
-        <div class="register" style="margin-top:-60px; font-family:serif;">
-            <h2 style="font-size:32px;">Register Youself</h2>
-            <p>
-                <center style="color: red;">{{message}}</center>
-            </p>
-            <form action="" method="post" class="form" enctype="multipart/form-data">
-                {%csrf_token%}
-                <div class="form__field">
-                    <label for='username'>Username</label>
-                    <input type="text" name='username' placeholder="kunal@123" required>
-                </div>
-                <div class="form__field">
-                    <label for='password'>Password</label>
-                    <input type="password" name="password" placeholder="••••••••••••" style="width:50%" required>
-                </div>
-                <div class="form__field">
-                    <label for='fullname'>Full Name</label>
-                    <input type="text" name='fullname' placeholder="kunal kr" required>
-                </div>
-                <div class="form__field">
-                    <label for='pcontact'>Personal Contact</label>
-                    <input type="number" name='pcontact' placeholder="5165423" required>
-                </div>
-                <div class="form__field">
-                    <label for='rcontact'>Relative Contact</label>
-                    <input type="number" name='rcontact' placeholder="5413624" required>
-                </div>
-                <div class="form__field">
-                    <label for='bgroup'>Blood Group</label>
-                    <input type="text" name='bgroup' placeholder="o+" required>
-                </div>
-                <div class="form__field">
-                    <label for='email'>Email</label>
-                    <input type="email" name='email' placeholder="kunal@gmail.com" style="width:50%" required>
-                </div>
-                <div class="form__field">
-                    <label for='age'>Age</label>
-                    <input type="number" name='age' placeholder="20" required>
-                </div>
-                <div class="form__field">
-                    <label for='address'>Address</label>
-                    <input type="text" name='address' placeholder="xyz" required>
-                </div>
-                <div class="form__field">
-                    <label for='profile'>Image</label>
-                    <input type="file" name="profile" placeholder="Upload Image" required>
+            <div id="content">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light  bg-white  shadow">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <a href="{%url 'Dashboard'%}"><strong>Pocket Hospital</strong></a>
+
+
+                </nav>
+            </div>
+            <div class="container-fluid" style="margin-top:-10px; margin-left:15%; width:1000px; overflow:hidden;">
+                <div class="shadow" style=" font-family:serif;">
+                    <h2 style="font-size:32px;">Register Youself</h2>
+                    <hr>
+                    <p>
+                        <center style="color: red;">{{message}}</center>
+                    </p>
+                    <form action="" method="post" class="form" enctype="multipart/form-data" style="margin-left:20px;">
+                        {%csrf_token%}
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='username'>Username</label></div>
+                                <div class="col-md-4"> <input type="text" name='username' placeholder="kunal@123" required></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='password'>Password</label></div>
+                                <div class="col-md-4"> <input type="password" name="password" placeholder="••••••••••••" style="width:50%" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='fullname'>Full Name</label></div>
+                                <div class="col-md-4"> <input type="text" name='fullname' placeholder="kunal kr" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='pcontact'>Personal Contact</label></div>
+                                <div class="col-md-4"> <input type="number" name='pcontact' placeholder="5165423" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='rcontact'>Relative Contact</label></div>
+                                <div class="col-md-4"> <input type="number" name='rcontact' placeholder="5413624" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='bgroup'>Blood Group</label></div>
+                                <div class="col-md-4"> <input type="text" name='bgroup' placeholder="o+" required></div>
+                            </div>
+
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='email'>Email</label></div>
+                                <div class="col-md-4"> <input type="email" name='email' placeholder="kunal@gmail.com" style="width:50%" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='age'>Age</label></div>
+                                <div class="col-md-4"> <input type="number" name='age' placeholder="20" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='address'>Address</label></div>
+                                <div class="col-md-4"> <input type="text" name='address' placeholder="xyz" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form__field">
+                            <div class="row">
+                                <div class="col-md-4"> <label for='profile'>Image</label></div>
+                                <div class="col-md-4"><input type="file" name="profile" placeholder="Upload Image" required></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+
+                        <div class="form__field">
+
+                            <input type="submit" value="Sign up" class="btn btn-success shadow" style="margin-left: 380px;">
+                        </div>
+                        <hr>
+                    </form>
+                    <br>
+                    <p style="margin-top:-2%;">Already have an accout? <a href="/login">Log in</a></p>
+                    <br>
+
                 </div>
 
-                <div class="form__field">
-                    <input type="submit" value="Sign Up">
-                </div>
 
-            </form>
 
-            <p style="margin-top:-5%;">Already have an accout? <a href="/login">Log in</a></p>
-
+            </div>
         </div>
 
     </div>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#ok').hide();
+            $('#predict').click(function() {
+                $('#ok').show();
+            })
+        });
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </body>
 
