@@ -1,4 +1,6 @@
-# Pocket-Medical
+# Pocket-Medical 
+This ia a application where user can check the severity of wound (Severe or not) ,can Store the modical history with report ,   can search its nearby medicals/hospitals ,  can generate qr code of their
+profile information and can also deocde it.
 
 # Environment setup
   * Clone  - git clone https://github.com/Kunal614/Pocket-Medical.git
