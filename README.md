@@ -14,7 +14,7 @@ profile information and can also deocde it.
   * I used ```here map Api``` (it is free) Add api key in the Medical and Hospital Function in views.py.
   * python3 manage.py makemigrations
   * python3 manage.py migrate
-  * python3 manage.py runserver 
+  * python3 manage.py runserver. 
   
 * Cnn model https://github.com/Kunal614/Pocket-Medical-CNN-Model
 * App link https://pocket-hospital.herokuapp.com/
